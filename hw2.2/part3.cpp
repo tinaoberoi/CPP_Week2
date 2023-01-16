@@ -14,12 +14,11 @@ void printVec(vector<double> v) {
 
 int main()
 {
-    vector<double> original_vec {3, 2, 6, 4, 1, 7};
+    vector<double> original_vec {3, 2, 6, 4, 1};
     int n = original_vec.size();
     cout<<"Printing original vector\n";
     printVec(original_vec);
-    
-    partial_sort(original_vec.begin(), original_vec.begin() + (n/2)+1, original_vec.end());
+    nth_element(original_vec.begin(), original_vec.begin()+(n/2) ,original_vec.end());
     printVec(original_vec);
     double median;
     if (n%2 == 0){
