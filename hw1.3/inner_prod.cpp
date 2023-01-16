@@ -12,5 +12,5 @@ int main(){
     cout << "Using inner product\n";
     double sq_sum = inner_product(v.begin(), v.end(), v.begin(), 0);
     cout << "Sum of Squares of all elemets in array  : " << sq_sum << endl;
-    cout << " Euclidean Distance: " <<sqrt(sq_sum)<<"\n";
+    cout << "Euclidean Distance: " <<sqrt(sq_sum)<<"\n";
 }

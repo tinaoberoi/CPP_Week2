@@ -28,7 +28,10 @@ int main()
     cout<<"Printing new vector\n";
     printVec(new_vec);
     int init = 0;
-    cout << "using custom accumulate function: \n";
-    cout << sqrt(accumulate (new_vec.begin(), new_vec.end(), init))<<"\n";
+    cout << "using custom accumulate function \n";
+    double sq_sum = accumulate (new_vec.begin(), new_vec.end(), init);
+    cout << "Sum of sqaures :"<<sq_sum<<"\n";
+    cout << "Pythogorean Distance : " <<sqrt(sq_sum)<<"\n";
     return 0;
 }
+
