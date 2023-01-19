@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <numeric>
+#include <chrono>
 
 using namespace std;
 
@@ -16,25 +17,26 @@ double op_square(double x) { return x * x; }
 
 int main()
 {
-    vector<double> original_vec;
-    vector<double> new_vec;
-    for(int i =1; i<=6; i++){
-        original_vec.push_back((i));
-    }
-    original_vec.push_back(7);
-    original_vec.push_back(8);
-    cout<<"Printing original vector\n";
-    printVec(original_vec);
-    
-    sort(original_vec.begin(), original_vec.end());
-    int n = original_vec.size();
+    cout<<"Find median using sort for a vector of doubles: "<<endl; 
+    vector<double> vec {3.2, 2.6, 6.5, 4.1, 1.8, 7.01, 1.5, 8.2};
+    printVec(vec);
+
+    auto start = std::chrono::high_resolution_clock::now();
+    sort(vec.begin(), vec.end());
+    printVec(vec);
+    int len = vec.size();
+    int n = len/2;
     double median;
     if (n%2 == 0){
-        median = (original_vec[n/2] + original_vec[n/2 - 1])/2;
+        median = (vec[n] + vec[n- 1])/2;
     } else {
-        median = original_vec[n/2];
+        median = vec[n];
     }
-    
     cout<<"Median: "<<median<<"\n";
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    cout<<"Time Taken: "<< duration.count()<<"\n";
+
     return 0;
 }

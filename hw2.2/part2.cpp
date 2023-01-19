@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <numeric>
+#include <chrono>
 
 using namespace std;
 
@@ -14,20 +15,26 @@ void printVec(vector<double> v) {
 
 int main()
 {
-    vector<double> original_vec {3, 2, 6, 4, 1, 7};
-    int n = original_vec.size();
-    cout<<"Printing original vector\n";
-    printVec(original_vec);
+    cout<<"Find median using partial sort for a vector of doubles: "<<endl; 
+    vector<double> vec {3.2, 2.6, 6.5, 4.1, 1.8, 7.01, 1.5, 8.2};
+    int len = vec.size();
+    int n = len/2;
+    printVec(vec);
     
-    partial_sort(original_vec.begin(), original_vec.begin() + (n/2)+1, original_vec.end());
-    printVec(original_vec);
+    auto start = std::chrono::high_resolution_clock::now();
+    partial_sort(vec.begin(), vec.begin() + n + 1, vec.end());
+    printVec(vec);
     double median;
-    if (n%2 == 0){
-        median = (original_vec[n/2] + original_vec[n/2 - 1])/2;
+    if (len%2 == 0){
+        median = (vec[n] + vec[n - 1])/2;
     } else {
-        median = original_vec[n/2];
+        median = vec[n];
     }
-    
     cout<<"Median: "<<median<<"\n";
+
+    auto end = std::chrono::high_resolution_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
+    cout<<"Time Taken: "<< duration.count()<<"\n";
+    
     return 0;
 }
