@@ -13,8 +13,6 @@ void printVec(vector<double> v) {
     cout<<"\n";
 }
 
-double op_square(double x) { return x * x; }
-
 int main()
 {
     cout<<"Find median using sort for a vector of doubles: "<<endl; 
