@@ -20,7 +20,7 @@ int main()
     int len = vec.size();
     int n = len/2;
     printVec(vec);
-    
+
     auto start = std::chrono::high_resolution_clock::now();
     partial_sort(vec.begin(), vec.begin() + n + 1, vec.end());
     printVec(vec);
@@ -35,6 +35,11 @@ int main()
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
     cout<<"Time Taken: "<< duration.count()<<"\n";
-    
+    /*
+    Is this more efficient? Why do you think that? (You can give an intuitive or practical answer without precise mathematical analysis).
+
+    The partial sort complexity is O(N*logK), where K in this case is N/2. The performance improvement wont be vissible much for small
+    N but for large N, partial sort will perform better than sort.
+    */
     return 0;
 }

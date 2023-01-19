@@ -34,5 +34,10 @@ int main()
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
     cout<<"Time Taken: "<< duration.count()<<"\n";
+
+    /*
+    Do you think this is even more efficient? Why?
+    n_th element uses quickselect algorithm which has expected time of O(N). Thus it will even faster.
+    */
     return 0;
 }
